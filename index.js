@@ -9,7 +9,7 @@ const config = require('./settings.json');
 const express = require('express');
 
 const app = express();
-
+let isJoined = false;
 const PORT = process.env.PORT || 8001
 
 app.get('/', (req, res) => {
@@ -19,6 +19,10 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log('Server started');
 });
+
+setInterval(() => {
+   if (!isJoined) createBot();
+}, 5000);
 
 function createBot() {
    const bot = mineflayer.createBot({
@@ -85,6 +89,7 @@ function createBot() {
 
    bot.once('spawn', () => {
       console.log('\x1b[33m[AfkBot] Bot joined the server', '\x1b[0m');
+     isJoined = true;
 
       if (config.utils['auto-auth'].enabled) {
          console.log('[INFO] Started auto-auth module');
@@ -154,6 +159,7 @@ function createBot() {
 
    if (config.utils['auto-reconnect']) {
       bot.on('end', () => {
+        isJoined = false;
          setTimeout(() => {
             createBot();
          }, config.utils['auto-recconect-delay']);
@@ -165,11 +171,13 @@ function createBot() {
          '\x1b[33m',
          `[AfkBot] Bot was kicked from the server. Reason: \n${reason}`,
          '\x1b[0m'
-      )
+      );
+          isJoined = false;
    );
 
    bot.on('error', (err) =>
-      console.log(`\x1b[31m[ERROR] ${err.message}`, '\x1b[0m')
+      console.log(`\x1b[31m[ERROR] ${err.message}`, '\x1b[0m');
+          isJoined = false;
    );
 }
 
