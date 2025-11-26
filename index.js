@@ -2,17 +2,20 @@ const mineflayer = require('mineflayer');
 const Movements = require('mineflayer-pathfinder').Movements;
 const pathfinder = require('mineflayer-pathfinder').pathfinder;
 const { GoalBlock } = require('mineflayer-pathfinder').goals;
+import dotenv from "dotenv";
 
 const config = require('./settings.json');
 const express = require('express');
 
 const app = express();
 
+const PORT = process.env.PORT || 8001
+
 app.get('/', (req, res) => {
   res.send('Bot has arrived');
 });
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
   console.log('Server started');
 });
 
