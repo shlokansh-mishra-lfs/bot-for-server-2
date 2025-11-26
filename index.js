@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 
 setInterval(() => {
    if (!isJoined) createBot();
-}, 5000);
+}, 20000);
 
 function createBot() {
    const bot = mineflayer.createBot({
