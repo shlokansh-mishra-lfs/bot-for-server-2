@@ -2,7 +2,8 @@ const mineflayer = require('mineflayer');
 const Movements = require('mineflayer-pathfinder').Movements;
 const pathfinder = require('mineflayer-pathfinder').pathfinder;
 const { GoalBlock } = require('mineflayer-pathfinder').goals;
-import dotenv from "dotenv";
+const dotenv = require("dotenv");
+
 
 const config = require('./settings.json');
 const express = require('express');
