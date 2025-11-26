@@ -35,18 +35,13 @@
       "repeat-delay": 60,
 
       "messages": [
-        "§8 I'm a regular player",
-        "§8 Subscibe To Slobos!",
-        "§8 I Like to Play Minecraft!",
-        "§8 hello ??",
-        "§8 hiiiii",
-        "§8 less goooo !!",
-        "§8 yo"
+        "I'm a regular player",
+        "Subscibe To Slobos!"
       ]
     },
 
     "chat-log": true,
     "auto-reconnect": true,
-    "auto-recconect-delay": 10000
+    "auto-recconect-delay": 15000
   }
 }
